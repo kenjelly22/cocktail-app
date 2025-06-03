@@ -18,22 +18,21 @@ const handleSearchEvent = () => {
 }
 
 const renderDrink = (selectedDrinkDetails) => {
-  const image = document.createElement("img")
-  const name = document.createElement("h2")
-
   const drinkImage = selectedDrinkDetails.strDrinkThumb
-  image.className = "drink-image"
-  image.src = drinkImage
-  image.alt = selectedDrinkDetails.strDrink
-
   const drinkName = selectedDrinkDetails.strDrink
+
+  const image = document.querySelector("#drink-image")
+  image.src = drinkImage
+  image.alt = drinkName
+
+  const name = document.querySelector("#drink-name")
   name.innerText = drinkName
 
   const recipeButton = document.createElement("button")
   recipeButton.id = "recipe-button"
   recipeButton.innerText = "Make This Drink!"
 
-  drinkDetails.append(image, name, recipeButton)
+  drinkDetails.append(recipeButton)
   recipeButton.addEventListener("click", () => recipeClick())
 }
 
