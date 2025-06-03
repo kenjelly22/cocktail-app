@@ -21,7 +21,12 @@ const renderDrink = (selectedDrinkDetails) => {
   const drinkImage = selectedDrinkDetails.strDrinkThumb
   const drinkName = selectedDrinkDetails.strDrink
 
-  const image = document.querySelector("#drink-image")
+  // const image = document.querySelector("#drink-image")
+  // image.src = drinkImage
+  // image.alt = drinkName
+
+  const image = document.createElement("img")
+  image.className = "drink-image"
   image.src = drinkImage
   image.alt = drinkName
 
@@ -32,7 +37,8 @@ const renderDrink = (selectedDrinkDetails) => {
   recipeButton.id = "recipe-button"
   recipeButton.innerText = "Make This Drink!"
 
-  drinkDetails.append(recipeButton)
+  drinkDetails.append(image, recipeButton)
+
   recipeButton.addEventListener("click", () => recipeClick())
 }
 
