@@ -4,6 +4,11 @@ const userInput = document.querySelector("#database-search")
 const drinkDetails = document.querySelector("#drink-details")
 const recipeContainer = document.querySelector("#recipe-container")
 const recipeInstructions = document.querySelector("#instructions")
+const ingredientList = document.querySelector("#ingredients")
+const measurementList = document.querySelector("#measurements")
+const ingredientHeader = document.querySelector("#ingredient-header")
+const measurementHeader = document.querySelector("#measurement-header")
+const instructionHeader = document.querySelector("#instruction-header")
 
 const handleSearchEvent = () => {
   searchBtn.addEventListener("click", () => {
@@ -43,8 +48,83 @@ const renderDrink = (selectedDrinkDetails) => {
 }
 
 const recipeClick = (selectedDrinkDetails) => {
-  recipeInstructions.textContent =
-    "Instructions:  " + selectedDrinkDetails.strInstructions
+  recipeInstructions.textContent = selectedDrinkDetails.strInstructions
+  instructionHeader.textContent = "Instructions"
+
+  getIngredients(selectedDrinkDetails)
+  getMeasurements(selectedDrinkDetails)
+}
+
+const getIngredients = (selectedDrinkDetails) => {
+  const ingredient1 = selectedDrinkDetails.strIngredient1
+  const ingredient2 = selectedDrinkDetails.strIngredient2
+  const ingredient3 = selectedDrinkDetails.strIngredient3
+  const ingredient4 = selectedDrinkDetails.strIngredient4
+  const ingredient5 = selectedDrinkDetails.strIngredient5
+  const ingredient6 = selectedDrinkDetails.strIngredient6
+  const ingredient7 = selectedDrinkDetails.strIngredient7
+  const ingredient8 = selectedDrinkDetails.strIngredient8
+  const ingredient9 = selectedDrinkDetails.strIngredient9
+  const ingredient10 = selectedDrinkDetails.strIngredient10
+
+  const ingredientArr = [
+    ingredient1,
+    ingredient2,
+    ingredient3,
+    ingredient4,
+    ingredient5,
+    ingredient6,
+    ingredient7,
+    ingredient8,
+    ingredient9,
+    ingredient10,
+  ]
+
+  for (const ingredient of ingredientArr) {
+    if (ingredient != null) {
+      ingredientHeader.textContent = "Ingredients"
+      const li = document.createElement("li")
+      li.innerText = ingredient
+      ingredientList.append(li)
+    }
+  }
+}
+
+const getMeasurements = (selectedDrinkDetails) => {
+  const measurement1 = selectedDrinkDetails.strMeasure1
+  const measurement2 = selectedDrinkDetails.strMeasure2
+  const measurement3 = selectedDrinkDetails.strMeasure3
+  const measurement4 = selectedDrinkDetails.strMeasure4
+  const measurement5 = selectedDrinkDetails.strMeasure5
+  const measurement6 = selectedDrinkDetails.strMeasure6
+  const measurement7 = selectedDrinkDetails.strMeasure7
+  const measurement8 = selectedDrinkDetails.strMeasure8
+  const measurement9 = selectedDrinkDetails.strMeasure9
+  const measurement10 = selectedDrinkDetails.strMeasure10
+
+  const measurementArr = [
+    measurement1,
+    measurement2,
+    measurement3,
+    measurement4,
+    measurement5,
+    measurement6,
+    measurement7,
+    measurement8,
+    measurement9,
+    measurement10,
+  ]
+
+  console.log(measurementArr)
+
+  for (const measurement of measurementArr) {
+    if (measurement != null) {
+      measurementHeader.textContent = "Measurements"
+      const li = document.createElement("li")
+      li.innerText = measurement
+      measurementList.append(li)
+    }
+  }
 }
 
 handleSearchEvent()
