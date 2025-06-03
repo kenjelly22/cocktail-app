@@ -21,3 +21,12 @@ li,
 p {
   text-align: center;
 }
+
+ul {
+  list-style-type: none;
+}
+
+#ingredient-container,
+#measurement-container {
+  display: inline-block;
+}
