@@ -38,7 +38,3 @@ const renderDrink = (selectedDrinkDetails) => {
 }
 
 handleSearchEvent()
-
-const recipeButton = document.createElement("button")
-recipeButton.id = "recipe-button"
-recipeButton.innerText = "Make This Drink!"
