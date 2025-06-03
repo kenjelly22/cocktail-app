@@ -2,6 +2,8 @@ const url = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s="
 const searchBtn = document.querySelector("#search-button")
 const userInput = document.querySelector("#database-search")
 const drinkDetails = document.querySelector("#drink-details")
+const recipeContainer = document.querySelector("#recipe-container")
+const recipeInstructions = document.querySelector("#instructions")
 
 const handleSearchEvent = () => {
   searchBtn.addEventListener("click", () => {
@@ -35,11 +37,14 @@ const renderDrink = (selectedDrinkDetails) => {
 
   drinkDetails.append(image, recipeButton)
 
-  recipeButton.addEventListener("click", () => recipeClick())
+  recipeButton.addEventListener("click", () =>
+    recipeClick(selectedDrinkDetails)
+  )
 }
 
-const recipeClick = () => {
-  alert("Click")
+const recipeClick = (selectedDrinkDetails) => {
+  recipeInstructions.textContent =
+    "Instructions:  " + selectedDrinkDetails.strInstructions
 }
 
 handleSearchEvent()
