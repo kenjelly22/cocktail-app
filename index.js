@@ -1,22 +1,16 @@
-const url = "www.thecocktaildb.com/api/json/v1/1/search.php?s="
+const url = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s="
 const searchBtn = document.querySelector("#search-button")
-const userInput = document.querySelector("#database-search").value
+const userInput = document.querySelector("#database-search")
 
-const searchCocktails = () => {
-  // userInput
+const handleSearchEvent = () => {
   searchBtn.addEventListener("click", () => {
-    fetch(
-      "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=moscow_mule"
-    )
+    const inputText = userInput.value
+    const underscoredString = inputText.split(" ").join("_")
+
+    fetch(url + underscoredString)
       .then((res) => res.json())
-      .then((res) => {
-        const drinkName = res.drinks[0].strDrink
-        console.log(drinkName)
-      })
-      .catch((error) => {
-        console.error("Error fetching data:", error)
-      })
+      .then((drinkInfo) => console.log(drinkInfo))
   })
 }
 
-searchCocktails()
+handleSearchEvent()
