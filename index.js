@@ -34,7 +34,11 @@ const renderDrink = (selectedDrinkDetails) => {
   recipeButton.innerText = "Make This Drink!"
 
   drinkDetails.append(image, name, recipeButton)
-  recipeButton.addEventListener("click", () => alert("Click"))
+  recipeButton.addEventListener("click", () => recipeClick())
+}
+
+const recipeClick = () => {
+  alert("Click")
 }
 
 handleSearchEvent()
