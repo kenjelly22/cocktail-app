@@ -12,8 +12,6 @@ const handleSearchEvent = () => {
       .then((res) => res.json())
       .then((drinkInfo) => {
         const selectedDrinkDetails = drinkInfo.drinks[0]
-
-        console.log(selectedDrinkDetails)
         renderDrink(selectedDrinkDetails)
       })
   })
