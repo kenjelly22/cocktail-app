@@ -8,3 +8,9 @@ body {
   width: 350px;
   height: 350px;
 }
+
+#recipe-button {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
