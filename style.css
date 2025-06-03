@@ -3,3 +3,8 @@ body {
   color: white;
   text-align: center;
 }
+
+.drink-image {
+  width: 350px;
+  height: 350px;
+}

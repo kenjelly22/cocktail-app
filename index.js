@@ -1,16 +1,37 @@
 const url = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s="
 const searchBtn = document.querySelector("#search-button")
 const userInput = document.querySelector("#database-search")
+const drinkDetails = document.querySelector("#drink-details")
 
 const handleSearchEvent = () => {
   searchBtn.addEventListener("click", () => {
-    const inputText = userInput.value
+    const inputText = userInput.value.toLowerCase()
     const underscoredString = inputText.split(" ").join("_")
 
     fetch(url + underscoredString)
       .then((res) => res.json())
-      .then((drinkInfo) => console.log(drinkInfo))
+      .then((drinkInfo) => {
+        const selectedDrinkDetails = drinkInfo.drinks[0]
+
+        console.log(selectedDrinkDetails)
+        renderDrink(selectedDrinkDetails)
+      })
   })
+}
+
+const renderDrink = (selectedDrinkDetails) => {
+  const image = document.createElement("img")
+  const name = document.createElement("h2")
+
+  const drinkImage = selectedDrinkDetails.strDrinkThumb
+  image.className = "drink-image"
+  image.src = drinkImage
+  image.alt = selectedDrinkDetails.strDrink
+
+  const drinkName = selectedDrinkDetails.strDrink
+  name.innerText = drinkName
+
+  drinkDetails.append(image, name)
 }
 
 handleSearchEvent()
