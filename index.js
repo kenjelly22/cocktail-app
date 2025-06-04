@@ -25,7 +25,7 @@ const handleSearchEvent = () => {
     fetch(url + inputText)
       .then((res) => res.json())
       .then((drinkInfo) => {
-        if (drinkInfo.drinks == null) {
+        if (drinkInfo.drinks === null) {
           alert("Sorry... no matches. Try again.")
           return
         }
@@ -39,10 +39,14 @@ const handleSearchEvent = () => {
   })
 }
 
+let currentDrink = null
+
 const renderDrink = (selectedDrinkDetails) => {
   drinkDetails.style.display = "block"
   const drinkImage = selectedDrinkDetails.strDrinkThumb
   const drinkName = selectedDrinkDetails.strDrink
+
+  currentDrink = selectedDrinkDetails
 
   const image = document.querySelector("#drink-image")
   image.src = drinkImage
@@ -50,8 +54,6 @@ const renderDrink = (selectedDrinkDetails) => {
 
   const name = document.querySelector("#drink-name")
   name.innerText = drinkName
-
-  const favoriteBtn = document.querySelector("#add-favorite")
 
   const form = document.querySelector("form")
 
@@ -61,12 +63,18 @@ const renderDrink = (selectedDrinkDetails) => {
 
   drinkDetails.append(recipeButton)
 
-  favoriteBtn.addEventListener("click", () => addFavorite(selectedDrinkDetails))
-
   recipeButton.addEventListener("click", () =>
     recipeClick(selectedDrinkDetails)
   )
 }
+
+const favoriteBtn = document.querySelector("#add-favorite")
+
+favoriteBtn.addEventListener("click", () => {
+  if (currentDrink) {
+    addFavorite(currentDrink)
+  }
+})
 
 // Handle Favorites (Add, Delete, Update)
 
@@ -74,13 +82,8 @@ const addFavorite = (selectedDrinkDetails) => {
   const favImage = document.createElement("img")
   favImage.className = "fav-drink"
   favImage.src = selectedDrinkDetails.strDrinkThumb
-  if (
-    !favoritesContainer.querySelector(
-      `img[src="${selectedDrinkDetails.strDrinkThumb}"]`
-    )
-  ) {
-    favoritesContainer.append(favImage)
-  }
+
+  favoritesContainer.append(favImage)
 
   const newFavObj = {
     name: selectedDrinkDetails.strDrink,
@@ -107,7 +110,6 @@ const addFavorite = (selectedDrinkDetails) => {
     measurement9: selectedDrinkDetails.strMeasure9,
     measurement10: selectedDrinkDetails.strMeasure10,
   }
-
   saveFavorite(newFavObj)
 }
 
@@ -121,9 +123,7 @@ const saveFavorite = (newFavObj) => {
     body: JSON.stringify(newFavObj),
   })
     .then((res) => res.json())
-    .then((favDrinks) => {
-      console.log(favDrinks)
-    })
+    .then()
 }
 
 // Display Recipes:
