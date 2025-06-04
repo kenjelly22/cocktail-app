@@ -11,9 +11,14 @@ const measurementHeader = document.querySelector("#measurement-header")
 const instructionHeader = document.querySelector("#instruction-header")
 const favoritesContainer = document.querySelector("#favorites-container")
 
+// On Page Load
+
+drinkDetails.style.display = "none"
+
 const handleSearchEvent = () => {
   searchBtn.addEventListener("click", () => {
     recipeContainer.style.display = "none"
+
     const inputText = userInput.value.toLowerCase()
     if (inputText === "") {
       alert("Looks like you forgot to enter a drink!")
@@ -37,29 +42,26 @@ const handleSearchEvent = () => {
 }
 
 const renderDrink = (selectedDrinkDetails) => {
-  clearRecipeData()
+  drinkDetails.style.display = "block"
   const drinkImage = selectedDrinkDetails.strDrinkThumb
   const drinkName = selectedDrinkDetails.strDrink
 
-  const image = document.createElement("img")
-  image.className = "drink-image"
+  const image = document.querySelector("#drink-image")
   image.src = drinkImage
   image.alt = drinkName
 
-  const name = document.createElement("h2")
+  const name = document.querySelector("#drink-name")
   name.innerText = drinkName
 
-  const recipeButton = document.createElement("button")
-  recipeButton.id = "recipe-button"
-  recipeButton.className = "button"
-  recipeButton.innerText = "Make This Drink!"
+  const favoriteBtn = document.querySelector("#add-favorite")
 
-  const favoriteBtn = document.createElement("button")
-  favoriteBtn.id = "favorite-button"
-  favoriteBtn.className = "button"
-  favoriteBtn.innerText = "Add to Favorites"
+  const form = document.querySelector("form")
 
-  drinkDetails.append(image, name, favoriteBtn, recipeButton)
+  const comment = document.querySelector("#user-input")
+
+  const recipeButton = document.querySelector("#recipe-button")
+
+  drinkDetails.append(recipeButton)
 
   favoriteBtn.addEventListener("click", () => addFavorite(selectedDrinkDetails))
 
@@ -68,11 +70,15 @@ const renderDrink = (selectedDrinkDetails) => {
   )
 }
 
+// Handle Favorites (Add, Delete, Update)
+
 const addFavorite = (selectedDrinkDetails) => {
   const favImage = document.createElement("img")
   favImage.className = "fav-drink"
   favImage.src = selectedDrinkDetails.strDrinkThumb
   favoritesContainer.append(favImage)
+
+  console.log(selectedDrinkDetails)
 
   const newFavObj = {
     name: selectedDrinkDetails.strDrink,
@@ -100,10 +106,10 @@ const addFavorite = (selectedDrinkDetails) => {
     measurement10: selectedDrinkDetails.strMeasure10,
   }
 
-  fetchFavorites(newFavObj)
+  saveFavorite(newFavObj)
 }
 
-const fetchFavorites = (newFavObj) => {
+const saveFavorite = (newFavObj) => {
   fetch("http://localhost:3000/favorites/", {
     method: "POST",
     headers: {
@@ -114,9 +120,7 @@ const fetchFavorites = (newFavObj) => {
   })
 }
 
-const clearRecipeData = () => {
-  drinkDetails.innerHTML = ""
-}
+// Display Recipes:
 
 const recipeClick = (selectedDrinkDetails) => {
   recipeInstructions.textContent = selectedDrinkDetails.strInstructions

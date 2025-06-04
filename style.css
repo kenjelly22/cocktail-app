@@ -4,7 +4,7 @@ body {
   text-align: center;
 }
 
-.drink-image {
+#drink-image {
   width: 350px;
   height: 350px;
   margin-top: 20px;
@@ -16,10 +16,14 @@ body {
   height: 200px;
 }
 
-#recipe-button {
+#recipe-button,
+#favorite-button,
+#submit-button {
   display: block;
   margin-left: auto;
   margin-right: auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 h3,
