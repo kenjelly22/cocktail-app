@@ -12,7 +12,6 @@ const instructionHeader = document.querySelector("#instruction-header")
 
 const handleSearchEvent = () => {
   searchBtn.addEventListener("click", () => {
-    // hide recipe-container
     recipeContainer.style.display = "none"
     const inputText = userInput.value.toLowerCase()
     if (inputText === "") {
@@ -53,7 +52,11 @@ const renderDrink = (selectedDrinkDetails) => {
   recipeButton.id = "recipe-button"
   recipeButton.innerText = "Make This Drink!"
 
-  drinkDetails.append(image, name, recipeButton)
+  const favoriteBtn = document.createElement("button")
+  favoriteBtn.id = "favorite-button"
+  favoriteBtn.innerText = "Add to Favorites"
+
+  drinkDetails.append(image, name, recipeButton, favoriteBtn)
 
   recipeButton.addEventListener("click", () =>
     recipeClick(selectedDrinkDetails)
