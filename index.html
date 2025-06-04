@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>My Favorite Cocktails</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h1>My Favorite Cocktails</h1>
+    <div id="favorites"></div>
+    <div class="search-bar">
+      <label for="search-cocktails">Find Your Favorite Cocktail:</label>
+      <input
+        type="search"
+        id="database-search"
+        name="q"
+        placeholder="Search by Cocktail Name"
+      />
+      <button id="search-button">Search</button>
+    </div>
+    <div id="drink-details" class="hide"></div>
+    <div id="recipe-container">
+      <div id="ingredient-container">
+        <h3 id="ingredient-header"></h3>
+        <ul id="ingredients"></ul>
+      </div>
+      <div id="measurement-container">
+        <h3 id="measurement-header"></h3>
+        <ul id="measurements"></ul>
+      </div>
+      <div id="instruction-container">
+        <h3 id="instruction-header"></h3>
+        <p id="instructions"></p>
+      </div>
+    </div>
+  </body>
+  <script type="text/javascript" src="index.js"></script>
+</html>

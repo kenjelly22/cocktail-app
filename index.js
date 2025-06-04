@@ -1,0 +1,150 @@
+const url = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s="
+const searchBtn = document.querySelector("#search-button")
+const userInput = document.querySelector("#database-search")
+const drinkDetails = document.querySelector("#drink-details")
+const recipeContainer = document.querySelector("#recipe-container")
+const recipeInstructions = document.querySelector("#instructions")
+const ingredientList = document.querySelector("#ingredients")
+const measurementList = document.querySelector("#measurements")
+const ingredientHeader = document.querySelector("#ingredient-header")
+const measurementHeader = document.querySelector("#measurement-header")
+const instructionHeader = document.querySelector("#instruction-header")
+
+const handleSearchEvent = () => {
+  searchBtn.addEventListener("click", () => {
+    // hide recipe-container
+    recipeContainer.style.display = "none"
+    const inputText = userInput.value.toLowerCase()
+    if (inputText === "") {
+      alert("Looks like you forgot to enter a drink!")
+      return
+    }
+    fetch(url + inputText)
+      .then((res) => res.json())
+      .then((drinkInfo) => {
+        if (drinkInfo.drinks == null) {
+          alert("Sorry... no matches. Try again.")
+          return
+        }
+        const selectedDrinkDetails = drinkInfo.drinks[0]
+        const drinkNameLowerCase = selectedDrinkDetails.strDrink.toLowerCase()
+
+        if (drinkNameLowerCase === inputText) {
+          renderDrink(selectedDrinkDetails)
+        }
+      })
+  })
+}
+
+const renderDrink = (selectedDrinkDetails) => {
+  clearRecipeData()
+  const drinkImage = selectedDrinkDetails.strDrinkThumb
+  const drinkName = selectedDrinkDetails.strDrink
+
+  const image = document.createElement("img")
+  image.className = "drink-image"
+  image.src = drinkImage
+  image.alt = drinkName
+
+  const name = document.createElement("h2")
+  name.innerText = drinkName
+
+  const recipeButton = document.createElement("button")
+  recipeButton.id = "recipe-button"
+  recipeButton.innerText = "Make This Drink!"
+
+  drinkDetails.append(image, name, recipeButton)
+
+  recipeButton.addEventListener("click", () =>
+    recipeClick(selectedDrinkDetails)
+  )
+}
+
+const clearRecipeData = () => {
+  drinkDetails.innerHTML = ""
+}
+
+const recipeClick = (selectedDrinkDetails) => {
+  recipeInstructions.textContent = selectedDrinkDetails.strInstructions
+  instructionHeader.textContent = "Instructions"
+
+  getIngredients(selectedDrinkDetails)
+  getMeasurements(selectedDrinkDetails)
+  recipeContainer.style.display = "block"
+}
+
+const getIngredients = (selectedDrinkDetails) => {
+  const ingredient1 = selectedDrinkDetails.strIngredient1
+  const ingredient2 = selectedDrinkDetails.strIngredient2
+  const ingredient3 = selectedDrinkDetails.strIngredient3
+  const ingredient4 = selectedDrinkDetails.strIngredient4
+  const ingredient5 = selectedDrinkDetails.strIngredient5
+  const ingredient6 = selectedDrinkDetails.strIngredient6
+  const ingredient7 = selectedDrinkDetails.strIngredient7
+  const ingredient8 = selectedDrinkDetails.strIngredient8
+  const ingredient9 = selectedDrinkDetails.strIngredient9
+  const ingredient10 = selectedDrinkDetails.strIngredient10
+
+  const ingredientArr = [
+    ingredient1,
+    ingredient2,
+    ingredient3,
+    ingredient4,
+    ingredient5,
+    ingredient6,
+    ingredient7,
+    ingredient8,
+    ingredient9,
+    ingredient10,
+  ]
+
+  ingredientList.innerHTML = ""
+
+  for (const ingredient of ingredientArr) {
+    if (ingredient != null) {
+      ingredientHeader.textContent = "Ingredients"
+      const li = document.createElement("li")
+      li.innerText = ingredient
+      ingredientList.append(li)
+    }
+  }
+}
+
+const getMeasurements = (selectedDrinkDetails) => {
+  const measurement1 = selectedDrinkDetails.strMeasure1
+  const measurement2 = selectedDrinkDetails.strMeasure2
+  const measurement3 = selectedDrinkDetails.strMeasure3
+  const measurement4 = selectedDrinkDetails.strMeasure4
+  const measurement5 = selectedDrinkDetails.strMeasure5
+  const measurement6 = selectedDrinkDetails.strMeasure6
+  const measurement7 = selectedDrinkDetails.strMeasure7
+  const measurement8 = selectedDrinkDetails.strMeasure8
+  const measurement9 = selectedDrinkDetails.strMeasure9
+  const measurement10 = selectedDrinkDetails.strMeasure10
+
+  const measurementArr = [
+    measurement1,
+    measurement2,
+    measurement3,
+    measurement4,
+    measurement5,
+    measurement6,
+    measurement7,
+    measurement8,
+    measurement9,
+    measurement10,
+  ]
+
+  measurementList.innerHTML = ""
+
+  for (const measurement of measurementArr) {
+    if (measurement != null) {
+      measurementHeader.textContent = "Measurements"
+      const li = document.createElement("li")
+      li.innerText = measurement
+      measurementList.append(li)
+    }
+  }
+}
+
+handleSearchEvent()
