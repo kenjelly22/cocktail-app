@@ -51,26 +51,67 @@ const renderDrink = (selectedDrinkDetails) => {
 
   const recipeButton = document.createElement("button")
   recipeButton.id = "recipe-button"
+  recipeButton.className = "button"
   recipeButton.innerText = "Make This Drink!"
 
   const favoriteBtn = document.createElement("button")
   favoriteBtn.id = "favorite-button"
+  favoriteBtn.className = "button"
   favoriteBtn.innerText = "Add to Favorites"
 
-  drinkDetails.append(image, name, recipeButton, favoriteBtn)
+  drinkDetails.append(image, name, favoriteBtn, recipeButton)
 
-  favoriteBtn.addEventListener("click", () => addFavoriteImage(drinkImage))
+  favoriteBtn.addEventListener("click", () => addFavorite(selectedDrinkDetails))
 
   recipeButton.addEventListener("click", () =>
     recipeClick(selectedDrinkDetails)
   )
 }
 
-const addFavoriteImage = (drinkImage) => {
+const addFavorite = (selectedDrinkDetails) => {
   const favImage = document.createElement("img")
   favImage.className = "fav-drink"
-  favImage.src = drinkImage
+  favImage.src = selectedDrinkDetails.strDrinkThumb
   favoritesContainer.append(favImage)
+
+  const newFavObj = {
+    name: selectedDrinkDetails.strDrink,
+    image: selectedDrinkDetails.strDrinkThumb,
+    instructions: selectedDrinkDetails.strInstructions,
+    ingredient1: selectedDrinkDetails.strIngredient1,
+    ingredient2: selectedDrinkDetails.strIngredient2,
+    ingredient3: selectedDrinkDetails.strIngredient3,
+    ingredient4: selectedDrinkDetails.strIngredient4,
+    ingredient5: selectedDrinkDetails.strIngredient5,
+    ingredient7: selectedDrinkDetails.strIngredient7,
+    ingredient8: selectedDrinkDetails.strIngredient8,
+    ingredient6: selectedDrinkDetails.strIngredient6,
+    ingredient9: selectedDrinkDetails.strIngredient9,
+    ingredient10: selectedDrinkDetails.strIngredient10,
+    measurement1: selectedDrinkDetails.strMeasure1,
+    measurement2: selectedDrinkDetails.strMeasure2,
+    measurement3: selectedDrinkDetails.strMeasure3,
+    measurement4: selectedDrinkDetails.strMeasure4,
+    measurement5: selectedDrinkDetails.strMeasure5,
+    measurement6: selectedDrinkDetails.strMeasure6,
+    measurement7: selectedDrinkDetails.strMeasure7,
+    measurement8: selectedDrinkDetails.strMeasure8,
+    measurement9: selectedDrinkDetails.strMeasure9,
+    measurement10: selectedDrinkDetails.strMeasure10,
+  }
+
+  fetchFavorites(newFavObj)
+}
+
+const fetchFavorites = (newFavObj) => {
+  fetch("http://localhost:3000/favorites/", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+    },
+    body: JSON.stringify(newFavObj),
+  })
 }
 
 const clearRecipeData = () => {

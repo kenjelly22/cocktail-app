@@ -1,1 +1,30 @@
-{}
+{
+  "favorites": [
+    {
+      "id": "1b61",
+      "name": "Lemon Drop",
+      "image": "https://www.thecocktaildb.com/images/media/drink/mtpxgk1504373297.jpg",
+      "instructions": "Shake and strain into a chilled cocktail glass rimmed with sugar.",
+      "ingredient1": "Vodka",
+      "ingredient2": "Cointreau",
+      "ingredient3": "Lemon",
+      "ingredient4": null,
+      "ingredient5": null,
+      "ingredient7": null,
+      "ingredient8": null,
+      "ingredient6": null,
+      "ingredient9": null,
+      "ingredient10": null,
+      "measurement1": "1 1/2 shot ",
+      "measurement2": "1 1/2 shot ",
+      "measurement3": "Juice of 1 wedge ",
+      "measurement4": null,
+      "measurement5": null,
+      "measurement6": null,
+      "measurement7": null,
+      "measurement8": null,
+      "measurement9": null,
+      "measurement10": null
+    }
+  ]
+}
