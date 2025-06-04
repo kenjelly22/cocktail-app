@@ -15,18 +15,22 @@ const handleSearchEvent = () => {
     const inputText = userInput.value.toLowerCase()
     if (inputText === "") {
       alert("Looks like you forgot to enter a drink!")
-    } else {
-      fetch(url + inputText)
-        .then((res) => res.json())
-        .then((drinkInfo) => {
-          const selectedDrinkDetails = drinkInfo.drinks[0]
-          const drinkNameLowerCase = selectedDrinkDetails.strDrink.toLowerCase()
-
-          if (drinkNameLowerCase === inputText) {
-            renderDrink(selectedDrinkDetails)
-          }
-        })
+      return
     }
+    fetch(url + inputText)
+      .then((res) => res.json())
+      .then((drinkInfo) => {
+        if (drinkInfo.drinks == null) {
+          alert("Sorry... no matches. Try again.")
+          return
+        }
+        const selectedDrinkDetails = drinkInfo.drinks[0]
+        const drinkNameLowerCase = selectedDrinkDetails.strDrink.toLowerCase()
+
+        if (drinkNameLowerCase === inputText) {
+          renderDrink(selectedDrinkDetails)
+        }
+      })
   })
 }
 
