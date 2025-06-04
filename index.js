@@ -58,9 +58,16 @@ const renderDrink = (selectedDrinkDetails) => {
 
   drinkDetails.append(image, name, recipeButton, favoriteBtn)
 
+  favoriteBtn.addEventListener("click", () => addFavoriteImage(drinkImage))
+
   recipeButton.addEventListener("click", () =>
     recipeClick(selectedDrinkDetails)
   )
+}
+
+const addFavoriteImage = (drinkImage) => {
+  drinkImage
+  console.log(drinkImage)
 }
 
 const clearRecipeData = () => {
