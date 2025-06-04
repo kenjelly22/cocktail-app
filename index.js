@@ -12,6 +12,8 @@ const instructionHeader = document.querySelector("#instruction-header")
 
 const handleSearchEvent = () => {
   searchBtn.addEventListener("click", () => {
+    // hide recipe-container
+    recipeContainer.style.display = "none"
     const inputText = userInput.value.toLowerCase()
     if (inputText === "") {
       alert("Looks like you forgot to enter a drink!")
@@ -35,6 +37,7 @@ const handleSearchEvent = () => {
 }
 
 const renderDrink = (selectedDrinkDetails) => {
+  clearRecipeData()
   const drinkImage = selectedDrinkDetails.strDrinkThumb
   const drinkName = selectedDrinkDetails.strDrink
 
@@ -43,18 +46,22 @@ const renderDrink = (selectedDrinkDetails) => {
   image.src = drinkImage
   image.alt = drinkName
 
-  const name = document.querySelector("#drink-name")
+  const name = document.createElement("h2")
   name.innerText = drinkName
 
   const recipeButton = document.createElement("button")
   recipeButton.id = "recipe-button"
   recipeButton.innerText = "Make This Drink!"
 
-  drinkDetails.append(image, recipeButton)
+  drinkDetails.append(image, name, recipeButton)
 
   recipeButton.addEventListener("click", () =>
     recipeClick(selectedDrinkDetails)
   )
+}
+
+const clearRecipeData = () => {
+  drinkDetails.innerHTML = ""
 }
 
 const recipeClick = (selectedDrinkDetails) => {
@@ -63,6 +70,7 @@ const recipeClick = (selectedDrinkDetails) => {
 
   getIngredients(selectedDrinkDetails)
   getMeasurements(selectedDrinkDetails)
+  recipeContainer.style.display = "block"
 }
 
 const getIngredients = (selectedDrinkDetails) => {
@@ -89,6 +97,8 @@ const getIngredients = (selectedDrinkDetails) => {
     ingredient9,
     ingredient10,
   ]
+
+  ingredientList.innerHTML = ""
 
   for (const ingredient of ingredientArr) {
     if (ingredient != null) {
@@ -124,6 +134,8 @@ const getMeasurements = (selectedDrinkDetails) => {
     measurement9,
     measurement10,
   ]
+
+  measurementList.innerHTML = ""
 
   for (const measurement of measurementArr) {
     if (measurement != null) {

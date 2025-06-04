@@ -7,6 +7,7 @@ body {
 .drink-image {
   width: 350px;
   height: 350px;
+  margin-top: 20px;
 }
 
 #recipe-button {
