@@ -10,6 +10,11 @@ body {
   margin-top: 20px;
 }
 
+.fav-drink {
+  width: 200px;
+  height: 200px;
+}
+
 #recipe-button {
   display: block;
   margin-left: auto;

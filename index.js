@@ -9,6 +9,7 @@ const measurementList = document.querySelector("#measurements")
 const ingredientHeader = document.querySelector("#ingredient-header")
 const measurementHeader = document.querySelector("#measurement-header")
 const instructionHeader = document.querySelector("#instruction-header")
+const favoritesContainer = document.querySelector("#favorites-container")
 
 const handleSearchEvent = () => {
   searchBtn.addEventListener("click", () => {
@@ -66,8 +67,10 @@ const renderDrink = (selectedDrinkDetails) => {
 }
 
 const addFavoriteImage = (drinkImage) => {
-  drinkImage
-  console.log(drinkImage)
+  const favImage = document.createElement("img")
+  favImage.className = "fav-drink"
+  favImage.src = drinkImage
+  favoritesContainer.append(favImage)
 }
 
 const clearRecipeData = () => {
