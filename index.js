@@ -13,14 +13,20 @@ const instructionHeader = document.querySelector("#instruction-header")
 const handleSearchEvent = () => {
   searchBtn.addEventListener("click", () => {
     const inputText = userInput.value.toLowerCase()
-    const underscoredString = inputText.split(" ").join("_")
+    if (inputText === "") {
+      alert("Looks like you forgot to enter a drink!")
+    } else {
+      fetch(url + inputText)
+        .then((res) => res.json())
+        .then((drinkInfo) => {
+          const selectedDrinkDetails = drinkInfo.drinks[0]
+          const drinkNameLowerCase = selectedDrinkDetails.strDrink.toLowerCase()
 
-    fetch(url + underscoredString)
-      .then((res) => res.json())
-      .then((drinkInfo) => {
-        const selectedDrinkDetails = drinkInfo.drinks[0]
-        renderDrink(selectedDrinkDetails)
-      })
+          if (drinkNameLowerCase === inputText) {
+            renderDrink(selectedDrinkDetails)
+          }
+        })
+    }
   })
 }
 
@@ -114,8 +120,6 @@ const getMeasurements = (selectedDrinkDetails) => {
     measurement9,
     measurement10,
   ]
-
-  console.log(measurementArr)
 
   for (const measurement of measurementArr) {
     if (measurement != null) {
