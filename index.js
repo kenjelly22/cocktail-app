@@ -11,8 +11,6 @@ const measurementHeader = document.querySelector("#measurement-header")
 const instructionHeader = document.querySelector("#instruction-header")
 const favoritesContainer = document.querySelector("#favorites-container")
 
-// On Page Load
-
 drinkDetails.style.display = "none"
 
 const handleSearchEvent = () => {
@@ -76,9 +74,13 @@ const addFavorite = (selectedDrinkDetails) => {
   const favImage = document.createElement("img")
   favImage.className = "fav-drink"
   favImage.src = selectedDrinkDetails.strDrinkThumb
-  favoritesContainer.append(favImage)
-
-  console.log(selectedDrinkDetails)
+  if (
+    !favoritesContainer.querySelector(
+      `img[src="${selectedDrinkDetails.strDrinkThumb}"]`
+    )
+  ) {
+    favoritesContainer.append(favImage)
+  }
 
   const newFavObj = {
     name: selectedDrinkDetails.strDrink,
@@ -118,6 +120,10 @@ const saveFavorite = (newFavObj) => {
     },
     body: JSON.stringify(newFavObj),
   })
+    .then((res) => res.json())
+    .then((favDrinks) => {
+      console.log(favDrinks)
+    })
 }
 
 // Display Recipes:
