@@ -125,6 +125,22 @@ const saveFavorite = (newFavObj) => {
     .then((res) => res.json())
     .then()
 }
+const loadFavorites = () => {
+  fetch("http://localhost:3000/favorites/")
+    .then((res) => res.json())
+    .then((favorites) => {
+      favorites.forEach((favorite) => {
+        renderFavorite(favorite)
+      })
+    })
+}
+
+const renderFavorite = (favorite) => {
+  const favDrink = document.createElement("img")
+  favDrink.className = "fav-drink"
+  favDrink.src = favorite.image
+  favoritesContainer.append(favDrink)
+}
 
 // Display Recipes:
 
@@ -212,3 +228,4 @@ const getMeasurements = (selectedDrinkDetails) => {
 }
 
 handleSearchEvent()
+loadFavorites()
