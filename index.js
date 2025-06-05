@@ -13,6 +13,10 @@ const favoritesContainer = document.querySelector("#favorites-container")
 
 drinkDetails.style.display = "none"
 
+// ON SEARCH - CHECK API FOR MATCHING DRINK
+// Each time the Search Button is clicked, recipe container will be hidden until
+// recipe button is clicked
+
 const handleSearchEvent = () => {
   searchBtn.addEventListener("click", () => {
     recipeContainer.style.display = "none"
@@ -41,6 +45,9 @@ const handleSearchEvent = () => {
 
 let currentDrink = null
 
+// IF MATCHING DRINK IS FOUND > DISPLAY SEARCHED DRINK ON PAGE
+// Each time a new drink is searched, the new drink details display on page
+
 const renderDrink = (selectedDrinkDetails) => {
   drinkDetails.style.display = "block"
   const drinkImage = selectedDrinkDetails.strDrinkThumb
@@ -68,6 +75,7 @@ const renderDrink = (selectedDrinkDetails) => {
   )
 }
 
+// FAVORITE BUTTON
 const favoriteBtn = document.querySelector("#add-favorite")
 
 favoriteBtn.addEventListener("click", () => {
@@ -76,15 +84,9 @@ favoriteBtn.addEventListener("click", () => {
   }
 })
 
-// Handle Favorites (Add, Delete, Update)
+// ON CLICK - ADD FAVORITED DRINK AND DISPLAY ON PAGE
 
 const addFavorite = (selectedDrinkDetails) => {
-  const favImage = document.createElement("img")
-  favImage.className = "fav-drink"
-  favImage.src = selectedDrinkDetails.strDrinkThumb
-
-  favoritesContainer.append(favImage)
-
   const newFavObj = {
     name: selectedDrinkDetails.strDrink,
     image: selectedDrinkDetails.strDrinkThumb,
@@ -110,8 +112,11 @@ const addFavorite = (selectedDrinkDetails) => {
     measurement9: selectedDrinkDetails.strMeasure9,
     measurement10: selectedDrinkDetails.strMeasure10,
   }
+  renderFavorite(newFavObj)
   saveFavorite(newFavObj)
 }
+
+// SAVE FAVORITED DRINK TO DB.JSON
 
 const saveFavorite = (newFavObj) => {
   fetch("http://localhost:3000/favorites/", {
@@ -125,6 +130,9 @@ const saveFavorite = (newFavObj) => {
     .then((res) => res.json())
     .then()
 }
+
+// FETCH CURRENT FAVORITES ON PAGE LOAD
+
 const loadFavorites = () => {
   fetch("http://localhost:3000/favorites/")
     .then((res) => res.json())
@@ -134,15 +142,27 @@ const loadFavorites = () => {
       })
     })
 }
+// DISPLAY CURRENT FAVORITES ON PAGE
 
 const renderFavorite = (favorite) => {
   const favDrink = document.createElement("img")
   favDrink.className = "fav-drink"
   favDrink.src = favorite.image
+
   favoritesContainer.append(favDrink)
 }
 
-// Display Recipes:
+// ON IMG CLICK - DISPLAY THE SELECTED FAVORITE ON PAGE - // IF TIME
+
+// ON MOUSE OVER IMG - INCREASE SIZE OF IMAGE - ////// TO DO ///////
+
+// ON MOUSE OUT IMG - RETURN IMAGE TO PREVIOUS SIZE - ////// TO DO ///////
+
+// ON BUTTON CLICK - DISPLAY RECIPE FOR SELECTED DRINK // IF TIME
+
+// ON BUTTON CLICK - DELETE FAVORITE IMAGE FROM PAGE // IF TIME
+
+// ON BUTTON CLICK - DELETE FAVORITE FROM DB.JSON // IF TIME
 
 const recipeClick = (selectedDrinkDetails) => {
   recipeInstructions.textContent = selectedDrinkDetails.strInstructions
