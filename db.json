@@ -233,6 +233,32 @@
       "measurement8": null,
       "measurement9": null,
       "measurement10": null
+    },
+    {
+      "id": "0da8",
+      "name": "Pina Colada",
+      "image": "https://www.thecocktaildb.com/images/media/drink/upgsue1668419912.jpg",
+      "instructions": "Mix with crushed ice in blender until smooth. Pour into chilled glass, garnish and serve.",
+      "ingredient1": "Light rum",
+      "ingredient2": "Coconut milk",
+      "ingredient3": "Pineapple",
+      "ingredient4": null,
+      "ingredient5": null,
+      "ingredient7": null,
+      "ingredient8": null,
+      "ingredient6": null,
+      "ingredient9": null,
+      "ingredient10": null,
+      "measurement1": "3 oz ",
+      "measurement2": "3 tblsp ",
+      "measurement3": "3 tblsp ",
+      "measurement4": null,
+      "measurement5": null,
+      "measurement6": null,
+      "measurement7": null,
+      "measurement8": null,
+      "measurement9": null,
+      "measurement10": null
     }
   ]
 }
