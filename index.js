@@ -55,10 +55,6 @@ const renderDrink = (selectedDrinkDetails) => {
   const name = document.querySelector("#drink-name")
   name.innerText = drinkName
 
-  const form = document.querySelector("form")
-
-  const comment = document.querySelector("#user-input")
-
   const recipeButton = document.querySelector("#recipe-button")
 
   drinkDetails.append(recipeButton)
@@ -85,6 +81,8 @@ const addFavorite = (selectedDrinkDetails) => {
   favImage.src = selectedDrinkDetails.strDrinkThumb
 
   favoritesContainer.append(favImage)
+
+  mouseEvents(favImage)
 
   const newFavObj = {
     name: selectedDrinkDetails.strDrink,
@@ -144,6 +142,10 @@ const renderFavorite = (favorite) => {
 
   favoritesContainer.append(favDrink)
 
+  mouseEvents(favDrink)
+}
+
+const mouseEvents = (favDrink) => {
   favDrink.addEventListener("mouseenter", () => {
     favDrink.style.height = "250px"
     favDrink.style.width = "250px"
