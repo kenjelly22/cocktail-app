@@ -143,6 +143,16 @@ const renderFavorite = (favorite) => {
   favDrink.src = favorite.image
 
   favoritesContainer.append(favDrink)
+
+  favDrink.addEventListener("mouseenter", () => {
+    favDrink.style.height = "250px"
+    favDrink.style.width = "250px"
+  })
+
+  favDrink.addEventListener("mouseleave", () => {
+    favDrink.style.height = "200px"
+    favDrink.style.width = "200px"
+  })
 }
 
 const recipeClick = (selectedDrinkDetails) => {
