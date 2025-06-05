@@ -29,11 +29,11 @@ const handleSearchEvent = () => {
           alert("Sorry... no matches. Try again.")
           return
         }
-        const selectedDrinkDetails = drinkInfo.drinks[0]
-        const drinkNameLowerCase = selectedDrinkDetails.strDrink.toLowerCase()
+        const searchedDrinkDetails = drinkInfo.drinks[0]
+        const drinkNameLowerCase = searchedDrinkDetails.strDrink.toLowerCase()
 
         if (drinkNameLowerCase === inputText) {
-          renderDrink(selectedDrinkDetails)
+          renderDrink(searchedDrinkDetails)
         }
       })
   })
@@ -41,12 +41,12 @@ const handleSearchEvent = () => {
 
 let currentDrink = null
 
-const renderDrink = (selectedDrinkDetails) => {
+const renderDrink = (searchedDrinkDetails) => {
   drinkDetails.style.display = "block"
-  const drinkImage = selectedDrinkDetails.strDrinkThumb
-  const drinkName = selectedDrinkDetails.strDrink
+  const drinkImage = searchedDrinkDetails.strDrinkThumb
+  const drinkName = searchedDrinkDetails.strDrink
 
-  currentDrink = selectedDrinkDetails
+  currentDrink = searchedDrinkDetails
 
   const image = document.querySelector("#drink-image")
   image.src = drinkImage
@@ -60,7 +60,7 @@ const renderDrink = (selectedDrinkDetails) => {
   drinkDetails.append(recipeButton)
 
   recipeButton.addEventListener("click", () =>
-    recipeClick(selectedDrinkDetails)
+    recipeClick(searchedDrinkDetails)
   )
 }
 
@@ -72,42 +72,42 @@ favoriteBtn.addEventListener("click", () => {
   }
 })
 
-const addFavorite = (selectedDrinkDetails) => {
+const addFavorite = (searchedDrinkDetails) => {
   const favImageContainer = document.createElement("div")
   favImageContainer.id = "fav-container"
 
   const favImage = document.createElement("img")
   favImage.className = "fav-drink"
-  favImage.src = selectedDrinkDetails.strDrinkThumb
+  favImage.src = searchedDrinkDetails.strDrinkThumb
 
   favoritesContainer.append(favImage)
 
   mouseEvents(favImage)
 
   const newFavObj = {
-    name: selectedDrinkDetails.strDrink,
-    image: selectedDrinkDetails.strDrinkThumb,
-    instructions: selectedDrinkDetails.strInstructions,
-    ingredient1: selectedDrinkDetails.strIngredient1,
-    ingredient2: selectedDrinkDetails.strIngredient2,
-    ingredient3: selectedDrinkDetails.strIngredient3,
-    ingredient4: selectedDrinkDetails.strIngredient4,
-    ingredient5: selectedDrinkDetails.strIngredient5,
-    ingredient7: selectedDrinkDetails.strIngredient7,
-    ingredient8: selectedDrinkDetails.strIngredient8,
-    ingredient6: selectedDrinkDetails.strIngredient6,
-    ingredient9: selectedDrinkDetails.strIngredient9,
-    ingredient10: selectedDrinkDetails.strIngredient10,
-    measurement1: selectedDrinkDetails.strMeasure1,
-    measurement2: selectedDrinkDetails.strMeasure2,
-    measurement3: selectedDrinkDetails.strMeasure3,
-    measurement4: selectedDrinkDetails.strMeasure4,
-    measurement5: selectedDrinkDetails.strMeasure5,
-    measurement6: selectedDrinkDetails.strMeasure6,
-    measurement7: selectedDrinkDetails.strMeasure7,
-    measurement8: selectedDrinkDetails.strMeasure8,
-    measurement9: selectedDrinkDetails.strMeasure9,
-    measurement10: selectedDrinkDetails.strMeasure10,
+    name: searchedDrinkDetails.strDrink,
+    image: searchedDrinkDetails.strDrinkThumb,
+    instructions: searchedDrinkDetails.strInstructions,
+    ingredient1: searchedDrinkDetails.strIngredient1,
+    ingredient2: searchedDrinkDetails.strIngredient2,
+    ingredient3: searchedDrinkDetails.strIngredient3,
+    ingredient4: searchedDrinkDetails.strIngredient4,
+    ingredient5: searchedDrinkDetails.strIngredient5,
+    ingredient7: searchedDrinkDetails.strIngredient7,
+    ingredient8: searchedDrinkDetails.strIngredient8,
+    ingredient6: searchedDrinkDetails.strIngredient6,
+    ingredient9: searchedDrinkDetails.strIngredient9,
+    ingredient10: searchedDrinkDetails.strIngredient10,
+    measurement1: searchedDrinkDetails.strMeasure1,
+    measurement2: searchedDrinkDetails.strMeasure2,
+    measurement3: searchedDrinkDetails.strMeasure3,
+    measurement4: searchedDrinkDetails.strMeasure4,
+    measurement5: searchedDrinkDetails.strMeasure5,
+    measurement6: searchedDrinkDetails.strMeasure6,
+    measurement7: searchedDrinkDetails.strMeasure7,
+    measurement8: searchedDrinkDetails.strMeasure8,
+    measurement9: searchedDrinkDetails.strMeasure9,
+    measurement10: searchedDrinkDetails.strMeasure10,
   }
   saveFavorite(newFavObj)
 }
@@ -157,26 +157,26 @@ const mouseEvents = (favDrink) => {
   })
 }
 
-const recipeClick = (selectedDrinkDetails) => {
-  recipeInstructions.textContent = selectedDrinkDetails.strInstructions
+const recipeClick = (searchedDrinkDetails) => {
+  recipeInstructions.textContent = searchedDrinkDetails.strInstructions
   instructionHeader.textContent = "Instructions"
 
-  getIngredients(selectedDrinkDetails)
-  getMeasurements(selectedDrinkDetails)
+  getIngredients(searchedDrinkDetails)
+  getMeasurements(searchedDrinkDetails)
   recipeContainer.style.display = "block"
 }
 
-const getIngredients = (selectedDrinkDetails) => {
-  const ingredient1 = selectedDrinkDetails.strIngredient1
-  const ingredient2 = selectedDrinkDetails.strIngredient2
-  const ingredient3 = selectedDrinkDetails.strIngredient3
-  const ingredient4 = selectedDrinkDetails.strIngredient4
-  const ingredient5 = selectedDrinkDetails.strIngredient5
-  const ingredient6 = selectedDrinkDetails.strIngredient6
-  const ingredient7 = selectedDrinkDetails.strIngredient7
-  const ingredient8 = selectedDrinkDetails.strIngredient8
-  const ingredient9 = selectedDrinkDetails.strIngredient9
-  const ingredient10 = selectedDrinkDetails.strIngredient10
+const getIngredients = (searchedDrinkDetails) => {
+  const ingredient1 = searchedDrinkDetails.strIngredient1
+  const ingredient2 = searchedDrinkDetails.strIngredient2
+  const ingredient3 = searchedDrinkDetails.strIngredient3
+  const ingredient4 = searchedDrinkDetails.strIngredient4
+  const ingredient5 = searchedDrinkDetails.strIngredient5
+  const ingredient6 = searchedDrinkDetails.strIngredient6
+  const ingredient7 = searchedDrinkDetails.strIngredient7
+  const ingredient8 = searchedDrinkDetails.strIngredient8
+  const ingredient9 = searchedDrinkDetails.strIngredient9
+  const ingredient10 = searchedDrinkDetails.strIngredient10
 
   const ingredientArr = [
     ingredient1,
@@ -203,17 +203,17 @@ const getIngredients = (selectedDrinkDetails) => {
   }
 }
 
-const getMeasurements = (selectedDrinkDetails) => {
-  const measurement1 = selectedDrinkDetails.strMeasure1
-  const measurement2 = selectedDrinkDetails.strMeasure2
-  const measurement3 = selectedDrinkDetails.strMeasure3
-  const measurement4 = selectedDrinkDetails.strMeasure4
-  const measurement5 = selectedDrinkDetails.strMeasure5
-  const measurement6 = selectedDrinkDetails.strMeasure6
-  const measurement7 = selectedDrinkDetails.strMeasure7
-  const measurement8 = selectedDrinkDetails.strMeasure8
-  const measurement9 = selectedDrinkDetails.strMeasure9
-  const measurement10 = selectedDrinkDetails.strMeasure10
+const getMeasurements = (searchedDrinkDetails) => {
+  const measurement1 = searchedDrinkDetails.strMeasure1
+  const measurement2 = searchedDrinkDetails.strMeasure2
+  const measurement3 = searchedDrinkDetails.strMeasure3
+  const measurement4 = searchedDrinkDetails.strMeasure4
+  const measurement5 = searchedDrinkDetails.strMeasure5
+  const measurement6 = searchedDrinkDetails.strMeasure6
+  const measurement7 = searchedDrinkDetails.strMeasure7
+  const measurement8 = searchedDrinkDetails.strMeasure8
+  const measurement9 = searchedDrinkDetails.strMeasure9
+  const measurement10 = searchedDrinkDetails.strMeasure10
 
   const measurementArr = [
     measurement1,
