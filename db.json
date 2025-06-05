@@ -51,6 +51,32 @@
       "measurement8": null,
       "measurement9": null,
       "measurement10": null
+    },
+    {
+      "id": "a3f6",
+      "name": "Strawberry Daiquiri",
+      "image": "https://www.thecocktaildb.com/images/media/drink/deu59m1504736135.jpg",
+      "instructions": "Pour all ingredients into shaker with ice cubes. Shake well. Strain in chilled cocktail glass.",
+      "ingredient1": "Strawberry schnapps",
+      "ingredient2": "Light rum",
+      "ingredient3": "Lime juice",
+      "ingredient4": "Powdered sugar",
+      "ingredient5": "Strawberries",
+      "ingredient7": null,
+      "ingredient8": null,
+      "ingredient6": null,
+      "ingredient9": null,
+      "ingredient10": null,
+      "measurement1": "1/2 oz ",
+      "measurement2": "1 oz ",
+      "measurement3": "1 oz ",
+      "measurement4": "1 tsp ",
+      "measurement5": "1 oz ",
+      "measurement6": null,
+      "measurement7": null,
+      "measurement8": null,
+      "measurement9": null,
+      "measurement10": null
     }
   ]
 }
