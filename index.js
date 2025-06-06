@@ -10,7 +10,6 @@ const measurementList = document.querySelector("#measurements")
 const ingredientHeader = document.querySelector("#ingredient-header")
 const measurementHeader = document.querySelector("#measurement-header")
 const instructionHeader = document.querySelector("#instruction-header")
-const favoritesContainer = document.querySelector("#favorites-container")
 
 drinkDetails.style.display = "none"
 
@@ -89,9 +88,6 @@ favoriteBtn.addEventListener("click", () => {
 })
 
 const addFavorite = (selectedDrinkDetails) => {
-  const favImageContainer = document.createElement("div")
-  favImageContainer.id = "fav-container"
-
   const favImage = document.createElement("img")
   favImage.className = "fav-drink"
   favImage.src = selectedDrinkDetails.strDrinkThumb
