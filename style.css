@@ -2,6 +2,7 @@ body {
   background-color: black;
   color: white;
   text-align: center;
+  padding: 50px;
 }
 
 #drink-image {
@@ -18,7 +19,8 @@ body {
 
 #recipe-button,
 #favorite-button,
-#submit-button {
+#submit-button,
+#random-search {
   display: block;
   margin-left: auto;
   margin-right: auto;
@@ -40,4 +42,9 @@ ul {
 #ingredient-container,
 #measurement-container {
   display: inline-block;
+}
+
+#instruction-container {
+  margin-right: 30%;
+  margin-left: 30%;
 }
