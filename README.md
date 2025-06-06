@@ -2,7 +2,7 @@
 
 ## Description
 
-The **My Favorite Cocktails** app is a web application to search and store your favorite cocktail recipes. It utilizes [The Cocktail DB API](https://www.thecocktaildb.com/api.php) to fetch cocktails based on user input or on a random generator. The app will display an image of the drink, its name and recipe. The user can also add cocktails to their favorites. Once a cocktail is in the favorites, the user can click on the image to display drink details.
+The **My Favorite Cocktails** app is a web application to discover new cocktail recipes as well as to search and store your favorite recipes. It utilizes [The Cocktail DB API](https://www.thecocktaildb.com/api.php) to fetch cocktails based on user input or to fetch random cocktails. The app will display an image of the drink, its name and recipe. The User will be able to add any cocktail to their favorites list which will be stored in a db.json file. The User's favorite cocktails are displayed on the page and the full drink details can be displayed by clicking on the drink image.
 
 ## Features
 
@@ -10,6 +10,7 @@ The **My Favorite Cocktails** app is a web application to search and store your 
 - Display an image of searched cocktail and its name on screen.
 - Clicking on the "Make This Drink!" button will display recipe on the page.
 - Add cocktail to favorites list and stores to a db.json file.
+- Image of a cocktail in favorites list enlarges when moused over and returns to original size on mousing away.
 - Clicking on the image of a cocktail in favorites list displays image and drink details on the screen.
 - Clicking on the "Random" button will generate a random cocktail.
 
@@ -23,9 +24,9 @@ The **My Favorite Cocktails** app is a web application to search and store your 
 To use the My Favorite Cocktails app, follow these steps:
 
 1. Open the `index.html` file in your web browser.
-2. Enter the name of the cocktail recipe you are looking for.
+2. Enter the name of the cocktail recipe you are looking for in the Search Bar.
 3. Press "Search" button to retrieve cocktail results.
-4. Or click the "Try Something New" button to generate random cocktail results.
+4. Click the "Try Something New" button to generate random cocktail results.
 5. Click on the "Make This Drink" button to display the cocktail recipe.
 6. Click on the "Add to Favorites" button to add the recipe to your personal favorites list.
 7. Click on the image of one of your favorite cocktails to re-display the drink details.
