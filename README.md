@@ -20,9 +20,29 @@ The **My Favorite Cocktails** app is a web application to search and store your 
 
 ## Instructions
 
+To use the My Favorite Cocktails app, follow these steps:
+
+1. Open the `index.html` file in your web browser.
+2. Enter the name of the cocktail recipe you are looking for.
+3. Press "Search" button to retrieve cocktail results.
+4. Or click the "Try Something New" button to generate random cocktail results.
+5. Click on the "Make This Drink" button to display the cocktail recipe.
+6. Click on the "Add to Favorites" button to add the recipe to your personal favorites list.
+7. Click on the image of one of your favorite cocktails to re-display the drink details.
+
 ## Dependencies
 
 This project relies on the following dependencies:
+
+- [The Cocktail DB - Search By Name]("https://www.thecocktaildb.com/api/json/v1/1/search.php?s=")
+- [The Cocktail DB - Random](www.thecocktaildb.com/api/json/v1/1/random.php)
+- `index.html`, `style.css`, and `script.js` for front-end functionality.
+
+## Demo
+
+![Favorites](images/demo_launch.png)
+
+![Recipe Display](images/demo_recipe.png)
 
 ## Credits
 
