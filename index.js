@@ -2,6 +2,10 @@ const url = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s="
 const searchBtn = document.querySelector("#search-button")
 const userInput = document.querySelector("#database-search")
 const randomBtn = document.querySelector("#random")
+const favoriteBtn = document.querySelector("#favorite-button")
+
+const favoritesContainer = document.querySelector("#favorites-container")
+
 const drinkDetails = document.querySelector("#drink-details")
 const recipeContainer = document.querySelector("#recipe-container")
 const recipeInstructions = document.querySelector("#instructions")
@@ -10,7 +14,6 @@ const measurementList = document.querySelector("#measurements")
 const ingredientHeader = document.querySelector("#ingredient-header")
 const measurementHeader = document.querySelector("#measurement-header")
 const instructionHeader = document.querySelector("#instruction-header")
-const favoritesContainer = document.querySelector("#favorites-container")
 
 drinkDetails.style.display = "none"
 
@@ -163,8 +166,6 @@ randomBtn.addEventListener("click", () => {
   getRandomDrink()
 })
 
-const favoriteBtn = document.querySelector("#favorite-button")
-
 favoriteBtn.addEventListener("click", () => {
   if (currentDrink) {
     addFavorite(currentDrink)
@@ -233,13 +234,12 @@ const loadFavorites = () => {
     .then((res) => res.json())
     .then((favorites) => {
       favorites.forEach((favorite) => {
-        renderFavorite(favorite)
+        displayFavorite(favorite)
       })
     })
 }
 
-const renderFavorite = (favorite) => {
-  console.log(favorite)
+const displayFavorite = (favorite) => {
   const favDrink = document.createElement("img")
   favDrink.className = "fav-drink"
   favDrink.src = favorite.image
