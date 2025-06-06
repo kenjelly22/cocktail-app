@@ -1,6 +1,7 @@
 const url = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s="
 const searchBtn = document.querySelector("#search-button")
 const userInput = document.querySelector("#database-search")
+const randomBtn = document.querySelector("#random")
 const drinkDetails = document.querySelector("#drink-details")
 const recipeContainer = document.querySelector("#recipe-container")
 const recipeInstructions = document.querySelector("#instructions")
@@ -64,6 +65,19 @@ const renderDrink = (selectedDrinkDetails) => {
     recipeClick(selectedDrinkDetails)
   )
 }
+
+const getRandomDrink = () => {
+  fetch("http://www.thecocktaildb.com/api/json/v1/1/random.php")
+    .then((res) => res.json())
+    .then((cocktails) => {
+      const randomDrink = cocktails.drinks[0]
+      renderDrink(randomDrink)
+    })
+}
+
+randomBtn.addEventListener("click", () => {
+  getRandomDrink()
+})
 
 const favoriteBtn = document.querySelector("#add-favorite")
 
