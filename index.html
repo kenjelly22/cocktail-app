@@ -8,7 +8,9 @@
   </head>
   <body>
     <h1>My Favorite Cocktails</h1>
-    <div id="favorites"></div>
+    <div id="favorites-container">
+      <div class="fav-image"></div>
+    </div>
     <div class="search-bar">
       <label for="search-cocktails">Find Your Favorite Cocktail:</label>
       <input
@@ -19,7 +21,17 @@
       />
       <button id="search-button">Search</button>
     </div>
-    <div id="drink-details" class="hide"></div>
+    <div id="random-search">
+      <label for="random-cocktail">Not Sure What You Want?</label>
+      <button id="random">Try Something New</button>
+    </div>
+
+    <div id="drink-details">
+      <h1 id="drink-name"></h1>
+      <img id="drink-image" src="" alt="" />
+      <button id="favorite-button">Add to Favorites</button>
+      <button id="recipe-button">Make This Drink!</button>
+    </div>
     <div id="recipe-container">
       <div id="ingredient-container">
         <h3 id="ingredient-header"></h3>
