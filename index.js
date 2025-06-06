@@ -152,12 +152,42 @@ const loadFavorites = () => {
 }
 
 const renderFavorite = (favorite) => {
+  console.log(favorite)
   const favDrink = document.createElement("img")
   favDrink.className = "fav-drink"
   favDrink.src = favorite.image
 
-  favoritesContainer.append(favDrink)
+  favDrink.addEventListener("click", () => {
+    const fullDrinkDetails = {
+      strDrink: favorite.name,
+      strDrinkThumb: favorite.image,
+      strInstructions: favorite.instructions,
+      strIngredient1: favorite.ingredient1,
+      strIngredient2: favorite.ingredient2,
+      strIngredient3: favorite.ingredient3,
+      strIngredient4: favorite.ingredient4,
+      strIngredient5: favorite.ingredient5,
+      strIngredient6: favorite.ingredient6,
+      strIngredient7: favorite.ingredient7,
+      strIngredient8: favorite.ingredient8,
+      strIngredient9: favorite.ingredient9,
+      strIngredient10: favorite.ingredient10,
+      strMeasure1: favorite.measurement1,
+      strMeasure2: favorite.measurement2,
+      strMeasure3: favorite.measurement3,
+      strMeasure4: favorite.measurement4,
+      strMeasure5: favorite.measurement5,
+      strMeasure6: favorite.measurement6,
+      strMeasure7: favorite.measurement7,
+      strMeasure8: favorite.measurement8,
+      strMeasure9: favorite.measurement9,
+      strMeasure10: favorite.measurement10,
+    }
 
+    renderDrink(fullDrinkDetails)
+  })
+
+  favoritesContainer.append(favDrink)
   mouseEvents(favDrink)
 }
 
