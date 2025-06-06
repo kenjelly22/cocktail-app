@@ -73,9 +73,6 @@ favoriteBtn.addEventListener("click", () => {
 })
 
 const addFavorite = (searchedDrinkDetails) => {
-  const favImageContainer = document.createElement("div")
-  favImageContainer.id = "fav-container"
-
   const favImage = document.createElement("img")
   favImage.className = "fav-drink"
   favImage.src = searchedDrinkDetails.strDrinkThumb
@@ -120,9 +117,7 @@ const saveFavorite = (newFavObj) => {
       Accept: "application/json",
     },
     body: JSON.stringify(newFavObj),
-  })
-    .then((res) => res.json())
-    .then()
+  }).then((res) => res.json())
 }
 
 const loadFavorites = () => {
