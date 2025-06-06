@@ -10,6 +10,7 @@ const measurementList = document.querySelector("#measurements")
 const ingredientHeader = document.querySelector("#ingredient-header")
 const measurementHeader = document.querySelector("#measurement-header")
 const instructionHeader = document.querySelector("#instruction-header")
+const favoritesContainer = document.querySelector("#favorites-container")
 
 drinkDetails.style.display = "none"
 
@@ -88,6 +89,13 @@ favoriteBtn.addEventListener("click", () => {
 })
 
 const addFavorite = (selectedDrinkDetails) => {
+  const existingFavorites = favoritesContainer.querySelectorAll(".fav-drink")
+  for (const fav of existingFavorites) {
+    if (fav.src === selectedDrinkDetails.strDrinkThumb) {
+      alert("This drink is already in your favorites!")
+      return
+    }
+  }
   const favImage = document.createElement("img")
   favImage.className = "fav-drink"
   favImage.src = selectedDrinkDetails.strDrinkThumb
