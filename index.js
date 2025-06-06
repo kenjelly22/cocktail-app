@@ -68,7 +68,7 @@ const renderDrink = (selectedDrinkDetails) => {
 }
 
 const getRandomDrink = () => {
-  fetch("http://www.thecocktaildb.com/api/json/v1/1/random.php")
+  fetch("https://www.thecocktaildb.com/api/json/v1/1/random.php")
     .then((res) => res.json())
     .then((cocktails) => {
       const randomDrink = cocktails.drinks[0]

@@ -155,6 +155,32 @@
       "measurement8": null,
       "measurement9": null,
       "measurement10": null
+    },
+    {
+      "id": "968f",
+      "name": "Bluebird",
+      "image": "https://www.thecocktaildb.com/images/media/drink/5jhyd01582579843.jpg",
+      "instructions": "In a mixing glass half-filled with crushed ice, combine the gin, triple sec, Curacao, and bitters. Stir well. Strain into a cocktail glass and garnish with the lemon twist and the cherry.",
+      "ingredient1": "Gin",
+      "ingredient2": "Triple sec",
+      "ingredient3": "Blue Curacao",
+      "ingredient4": "Bitters",
+      "ingredient5": "Maraschino cherry",
+      "ingredient7": null,
+      "ingredient8": null,
+      "ingredient6": "Lemon peel",
+      "ingredient9": null,
+      "ingredient10": null,
+      "measurement1": "1 1/2 oz ",
+      "measurement2": "1/2 oz ",
+      "measurement3": "1/2 oz ",
+      "measurement4": "2 dashes ",
+      "measurement5": "1 ",
+      "measurement6": "1 twist of ",
+      "measurement7": null,
+      "measurement8": null,
+      "measurement9": null,
+      "measurement10": null
     }
   ]
 }
