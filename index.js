@@ -45,6 +45,7 @@ let currentDrink = null
 
 const renderDrink = (selectedDrinkDetails) => {
   drinkDetails.style.display = "block"
+  recipeContainer.style.display = "none"
   const drinkImage = selectedDrinkDetails.strDrinkThumb
   const drinkName = selectedDrinkDetails.strDrink
 
