@@ -47,6 +47,8 @@ const renderDrink = (searchedDrinkDetails) => {
   const drinkName = searchedDrinkDetails.strDrink
 
   currentDrink = searchedDrinkDetails
+  console.log(currentDrink)
+  console.log
 
   const image = document.querySelector("#drink-image")
   image.src = drinkImage
@@ -73,6 +75,9 @@ favoriteBtn.addEventListener("click", () => {
 })
 
 const addFavorite = (searchedDrinkDetails) => {
+  // const favImageContainer = document.createElement("div")
+  // favImageContainer.id = "fav-container"
+
   const favImage = document.createElement("img")
   favImage.className = "fav-drink"
   favImage.src = searchedDrinkDetails.strDrinkThumb
@@ -134,6 +139,9 @@ const renderFavorite = (favorite) => {
   const favDrink = document.createElement("img")
   favDrink.className = "fav-drink"
   favDrink.src = favorite.image
+
+  // on fav image click, render drink with recipe on the page
+  // favDrink.addEventListener("click", () => {})
 
   favoritesContainer.append(favDrink)
 
