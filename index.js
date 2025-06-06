@@ -25,6 +25,7 @@ const handleSearchEvent = () => {
     fetch(url + inputText)
       .then((res) => res.json())
       .then((drinkInfo) => {
+        userInput.value = ""
         if (drinkInfo.drinks === null) {
           alert("Sorry... no matches. Try again.")
           return
