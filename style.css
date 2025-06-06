@@ -6,6 +6,7 @@ body {
 }
 
 #drink-image {
+  display: inline-block;
   width: 350px;
   height: 350px;
   margin-top: 20px;

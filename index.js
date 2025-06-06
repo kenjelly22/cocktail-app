@@ -80,7 +80,7 @@ randomBtn.addEventListener("click", () => {
   getRandomDrink()
 })
 
-const favoriteBtn = document.querySelector("#add-favorite")
+const favoriteBtn = document.querySelector("#favorite-button")
 
 favoriteBtn.addEventListener("click", () => {
   if (currentDrink) {
@@ -152,7 +152,6 @@ const loadFavorites = () => {
 }
 
 const renderFavorite = (favorite) => {
-  console.log(favorite)
   const favDrink = document.createElement("img")
   favDrink.className = "fav-drink"
   favDrink.src = favorite.image
