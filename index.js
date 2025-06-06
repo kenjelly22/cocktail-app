@@ -234,12 +234,12 @@ const loadFavorites = () => {
     .then((res) => res.json())
     .then((favorites) => {
       favorites.forEach((favorite) => {
-        displayFavorite(favorite)
+        renderExistingFavorites(favorite)
       })
     })
 }
 
-const displayFavorite = (favorite) => {
+const renderExistingFavorites = (favorite) => {
   const favDrink = document.createElement("img")
   favDrink.className = "fav-drink"
   favDrink.src = favorite.image
